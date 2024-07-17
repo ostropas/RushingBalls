@@ -6,12 +6,13 @@ namespace Gameplay
     {
         [SerializeField] private Rigidbody2D _rigidbody2D;
         [SerializeField] private float _speed;
-        public Vector2 Velocity;
-    
-        private void Start()
+        
+        private Vector2 _velocity;
+
+        public void StartMoving(Vector2 velocity)
         {
-            Velocity = Velocity.normalized * _speed;
-            _rigidbody2D.AddForce(Velocity, ForceMode2D.Force);
+            _velocity = velocity.normalized * _speed;
+            _rigidbody2D.AddForce(_velocity, ForceMode2D.Force);
         }
 
         private void OnCollisionEnter2D(Collision2D other)
@@ -30,14 +31,22 @@ namespace Gameplay
         private void BounceFromWall(Collision2D collision2D)
         {
             ContactPoint2D contact = collision2D.GetContact(0);
-            Velocity = Vector3.Reflect(Velocity, contact.normal);
+            _velocity = Vector3.Reflect(_velocity, contact.normal);
             _rigidbody2D.velocity = Vector2.zero;
-            _rigidbody2D.AddForce(Velocity, ForceMode2D.Force);
+            _rigidbody2D.AddForce(_velocity, ForceMode2D.Force);
         }
 
         private void CompleteBallRound()
         {
+            _velocity = Vector2.zero;
             _rigidbody2D.velocity = Vector2.zero;
         }
+    }
+
+    public enum BallState
+    {
+        Waiting,
+        Moving,
+        ComingBack
     }
 }
