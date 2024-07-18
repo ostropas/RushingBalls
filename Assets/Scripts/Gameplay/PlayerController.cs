@@ -90,13 +90,20 @@ namespace Gameplay
             return new Vector2(Input.mousePosition.x, Input.mousePosition.y) - targetBallScreenPos;
         }
 
+        private Vector2 ClampRot(Vector2 vector2, float angle)
+        {
+            float vectorAngle = Vector2.Angle(Vector2.up, vector2) * Mathf.Sign(vector2.x);
+            float clampedVal = Mathf.Clamp(vectorAngle, -angle, angle);
+            return Quaternion.AngleAxis(clampedVal, -Vector3.forward) * Vector3.up;
+        }
+
         private void Update()
         {
             if (_currentState == GameplayState.Aiming)
             {
                 if (_isAiming)
                 {
-                    Vector2 dir = CalcDirection();
+                    Vector2 dir = ClampRot(CalcDirection(), 80);
                     _aimLineController.DrawLine(_instantiatedBalls[_pivotBallIndex].transform.position, dir.normalized); 
                 }
             }
