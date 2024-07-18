@@ -509,6 +509,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ballPrefab: {fileID: 4700729293134990337, guid: d74a0b1fdaf1adf4d933f26ab24234eb, type: 3}
   _dotPrefab: {fileID: 7258741509509506140, guid: 9ae443fcda602c641911090bbbf3bfb3, type: 3}
+  _delayBetweenShots: 0.05
+  _angleClamp: 80
 --- !u!114 &7917659514467323210
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using Controllers;
 using Data;
@@ -13,6 +14,8 @@ namespace Gameplay
         
         [SerializeField] private Ball _ballPrefab;
         [SerializeField] private GameObject _dotPrefab;
+        [SerializeField] private float _delayBetweenShots;
+        [SerializeField] private float _angleClamp = 80;
         
         private Camera _mainCamera;
         private List<Ball> _instantiatedBalls = new();
@@ -59,7 +62,8 @@ namespace Gameplay
         {
             _isAiming = false;
             _aimLineController.ClearLine();
-            //Shoot
+            Vector2 dir = ClampRot(CalcDirection(), _angleClamp);
+            Shoot(dir);
         }
 
         private void ExitAim()
@@ -83,6 +87,39 @@ namespace Gameplay
             }
         }
 
+        private void Shoot(Vector2 dir)
+        {
+            ChangeState(GameplayState.Moving);
+            StartCoroutine(ShootCoroutine(dir));
+        }
+
+        private IEnumerator ShootCoroutine(Vector2 dir)
+        {
+            WaitForSeconds delay = new WaitForSeconds(_delayBetweenShots);
+            int ballsReturned = 0;
+            int firstBall = -1;
+            foreach (Ball instantiatedBall in _instantiatedBalls)
+            {
+               instantiatedBall.StartMoving(dir, ball =>
+               {
+                   if (firstBall == -1)
+                   {
+                       firstBall = _instantiatedBalls.IndexOf(ball);
+                   }
+
+                   ballsReturned++;
+               });
+               yield return delay;
+            }
+
+            while (ballsReturned != _instantiatedBalls.Count)
+            {
+                yield return null;
+            }
+            
+            ChangeState(GameplayState.Aiming);
+        }
+
         private Vector2 CalcDirection()
         {
             Ball targetBall = _instantiatedBalls[_pivotBallIndex];
@@ -103,7 +140,7 @@ namespace Gameplay
             {
                 if (_isAiming)
                 {
-                    Vector2 dir = ClampRot(CalcDirection(), 80);
+                    Vector2 dir = ClampRot(CalcDirection(), _angleClamp);
                     _aimLineController.DrawLine(_instantiatedBalls[_pivotBallIndex].transform.position, dir.normalized); 
                 }
             }

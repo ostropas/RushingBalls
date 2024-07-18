@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Gameplay
@@ -8,11 +9,13 @@ namespace Gameplay
         [SerializeField] private float _speed;
         
         private Vector2 _velocity;
+        private Action<Ball> _onEndMoving;
 
-        public void StartMoving(Vector2 velocity)
+        public void StartMoving(Vector2 velocity, Action<Ball> onEnd)
         {
             _velocity = velocity.normalized * _speed;
             _rigidbody2D.AddForce(_velocity, ForceMode2D.Force);
+            _onEndMoving = onEnd;
         }
 
         private void OnCollisionEnter2D(Collision2D other)
@@ -23,8 +26,7 @@ namespace Gameplay
             }
             else if (other.gameObject.CompareTag("BottomBorder"))
             {
-                BounceFromWall(other);
-                //CompleteBallRound();    
+                CompleteBallRound();
             }
         }
 
@@ -40,6 +42,8 @@ namespace Gameplay
         {
             _velocity = Vector2.zero;
             _rigidbody2D.velocity = Vector2.zero;
+            _onEndMoving?.Invoke(this);
+            _onEndMoving = null;
         }
 
         public void RemovePhysics()
