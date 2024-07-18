@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Controllers;
@@ -105,9 +106,16 @@ namespace Gameplay
                    if (firstBall == -1)
                    {
                        firstBall = _instantiatedBalls.IndexOf(ball);
+                       ballsReturned++;
                    }
-
-                   ballsReturned++;
+                   else
+                   {
+                       ball.StartCoroutine(MoveToFirstCoroutine(ball, _instantiatedBalls[firstBall].transform.position,
+                           () =>
+                           {
+                               ballsReturned++;
+                           }));
+                   }
                });
                yield return delay;
             }
@@ -118,6 +126,27 @@ namespace Gameplay
             }
             
             ChangeState(GameplayState.Aiming);
+        }
+
+        private IEnumerator MoveToFirstCoroutine(Ball ball, Vector2 pos, Action onComplete)
+        {
+            Vector2 startPos = ball.transform.position;
+            float moveTime = 0.2f * (startPos - pos).magnitude;
+            if (moveTime > 0.01)
+            {
+                float t = 0;
+                while (t < moveTime)
+                {
+                    float normalizedVal = t / moveTime;
+                    Vector2 currentPos = Vector2.Lerp(startPos, pos, normalizedVal);
+                    ball.transform.position = currentPos;
+                    yield return null;
+                    t += Time.deltaTime;
+                }
+            }
+
+            ball.transform.position = pos;
+            onComplete?.Invoke();
         }
 
         private Vector2 CalcDirection()
