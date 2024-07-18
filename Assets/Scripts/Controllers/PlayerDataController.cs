@@ -14,7 +14,7 @@ namespace Controllers
 
         public PlayerDataController()
         {
-            _absoluteSavePath = Path.Combine(Application.dataPath, SAVE_PATH); 
+            _absoluteSavePath = Path.Combine(Application.persistentDataPath, SAVE_PATH); 
            Load(); 
         }
 

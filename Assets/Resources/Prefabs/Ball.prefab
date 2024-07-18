@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4700729293134990337}
   - component: {fileID: 4700729293134990338}
   - component: {fileID: 4700729293134990339}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 387196837
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0.41726118, b: 0, a: 1}
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!114 &4700729293134990337
 MonoBehaviour:
@@ -101,7 +101,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rigidbody2D: {fileID: 4700729293134990338}
   _speed: 0.05
-  Velocity: {x: 0.5, y: 1}
 --- !u!50 &4700729293134990338
 Rigidbody2D:
   serializedVersion: 4

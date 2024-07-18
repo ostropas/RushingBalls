@@ -41,6 +41,11 @@ namespace Gameplay
             _velocity = Vector2.zero;
             _rigidbody2D.velocity = Vector2.zero;
         }
+
+        public void RemovePhysics()
+        {
+            _rigidbody2D.simulated = false;
+        }
     }
 
     public enum BallState

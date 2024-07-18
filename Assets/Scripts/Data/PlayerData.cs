@@ -6,5 +6,6 @@ namespace Data
     public class PlayerData
     {
         public int CurrentLevel;
+        public int AdditionalBallsCount;
     }
 }

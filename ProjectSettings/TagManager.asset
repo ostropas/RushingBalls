@@ -46,6 +46,9 @@ TagManager:
   - name: Gamefield
     uniqueID: 1108461857
     locked: 0
+  - name: Dot
+    uniqueID: 2863997143
+    locked: 0
   - name: Ball
     uniqueID: 387196837
     locked: 0

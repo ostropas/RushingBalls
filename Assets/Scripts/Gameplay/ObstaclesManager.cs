@@ -1,18 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ObstaclesManager : MonoBehaviour
+namespace Gameplay
 {
-    // Start is called before the first frame update
-    void Start()
+    public class ObstaclesManager : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public void LoadLevel(int levelIndex) {
+            
+        }
     }
 }
