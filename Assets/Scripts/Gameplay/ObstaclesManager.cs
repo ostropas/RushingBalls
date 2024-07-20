@@ -7,12 +7,17 @@ namespace Gameplay
 {
     public class ObstaclesManager : MonoBehaviour
     {
+        public event Action<int> OnObstacleDestroy;
+        
         [SerializeField] private ObstaclesDictionary _obstacles;
-        private LevelsStorage _levelsStorage;
+        [SerializeField] private int _scorePerObstacle;
+        
+        private int _destroyedObstaclesCount;
+
+        public int MaxScore { get; private set; } = 0;
         
         public void LoadLevel(int levelIndex, LevelsStorage levelsStorage)
         {
-            _levelsStorage = levelsStorage;
             InstantiateLevel(levelsStorage.Levels[levelIndex]);
         }
 
@@ -24,6 +29,7 @@ namespace Gameplay
             float topOffset = levelData.TopOffset;
             int maxVal = levelData.Field.Max(f => f.Column.Max(c => c.Count));
 
+            MaxScore = levelData.Field.Count * levelData.Field[0].Column.Count * _scorePerObstacle;
             for (int i = 0; i < levelData.Field.Count; i++)
             {
                 for (int j = 0; j < levelData.Field[i].Column.Count; j++)
@@ -35,10 +41,16 @@ namespace Gameplay
                         float xPos = -leftOffset + i * size.x + size.x / 2;
                         float yPos = topOffset - j * size.y - size.y / 2;
                         obstacle.transform.localPosition = new Vector3(xPos, yPos, 0);
-                        obstacle.Init(fieldData.Count, levelData.Gradient.Evaluate(fieldData.Count / (float)maxVal));
+                        obstacle.Init(fieldData.Count,
+                            levelData.Gradient.Evaluate(fieldData.Count / (float)maxVal), ObstacleDestroy);
                     }
                 } 
             }
+        }
+
+        private void ObstacleDestroy()
+        {
+           OnObstacleDestroy?.Invoke(++_destroyedObstaclesCount * _scorePerObstacle); 
         }
     }
 

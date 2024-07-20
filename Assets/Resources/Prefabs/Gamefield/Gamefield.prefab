@@ -251,6 +251,7 @@ MonoBehaviour:
     - {fileID: 8203225055267650914, guid: 2bdbd52bfa269b44e98df567a461bdba, type: 3}
     - {fileID: 8203225055267650914, guid: 218db74509cf9a940b2429bb022ab61e, type: 3}
     - {fileID: 8203225055267650914, guid: e32fe58113ca584478132296bba6d2c1, type: 3}
+  _scorePerObstacle: 10
 --- !u!1 &7917659512855310967
 GameObject:
   m_ObjectHideFlags: 0

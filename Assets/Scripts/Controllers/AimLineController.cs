@@ -31,7 +31,6 @@ namespace Controllers
             float dotVal = Vector2.Dot(_prevDirection, direction);
             if ((1 - dotVal) < 0.00001f) return;
             _prevDirection = direction;
-            Debug.Log("Draw");
             ClearLine();
 
             int i = 0;

@@ -1,3 +1,4 @@
+using System;
 using Controllers;
 using Data;
 using UnityEngine;
@@ -7,8 +8,14 @@ namespace Gameplay
 {
     public class GamefieldController : MonoBehaviour
     {
+        public int MaxScore => _obstaclesManager.MaxScore;
+        
         private PlayerDataController _playerDataController;
         private LevelsStorage _levelsStorage;
+
+        private int _totalScore;
+
+        public event Action<int> ScoreUpdated; 
         
         [SerializeField] private PlayerController _playerController;
         [SerializeField] private ObstaclesManager _obstaclesManager;
@@ -26,7 +33,14 @@ namespace Gameplay
         private void Start()
         {
             _obstaclesManager.LoadLevel(_playerDataController.PlayerData.CurrentLevel, _levelsStorage);
+            _obstaclesManager.OnObstacleDestroy += OnObstacleDestroy;
             _playerController.Init(_playerDataController.PlayerData, _ballStartPosition, _gamefieldInputController);
+        }
+
+        private void OnObstacleDestroy(int score)
+        {
+            _totalScore += score;
+            ScoreUpdated?.Invoke(_totalScore); 
         }
         
         public class GamefieldFactory : IFactory<GamefieldController>
