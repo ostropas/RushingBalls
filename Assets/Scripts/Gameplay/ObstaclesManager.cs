@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Data;
 using UnityEngine;
 
@@ -21,6 +22,7 @@ namespace Gameplay
             float additionalOffset = levelData.Field.Count % 2 == 0 ? 0 : size.x / 2;
             float leftOffset = (size.x * (levelData.Field.Count / 2)) + additionalOffset;
             float topOffset = levelData.TopOffset;
+            int maxVal = levelData.Field.Max(f => f.Column.Max(c => c.Count));
 
             for (int i = 0; i < levelData.Field.Count; i++)
             {
@@ -33,7 +35,7 @@ namespace Gameplay
                         float xPos = -leftOffset + i * size.x + size.x / 2;
                         float yPos = topOffset - j * size.y - size.y / 2;
                         obstacle.transform.localPosition = new Vector3(xPos, yPos, 0);
-                        obstacle.Init(fieldData.Count);
+                        obstacle.Init(fieldData.Count, levelData.Gradient.Evaluate(fieldData.Count / (float)maxVal));
                     }
                 } 
             }

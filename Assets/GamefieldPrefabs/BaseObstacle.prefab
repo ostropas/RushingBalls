@@ -74,6 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _countText: {fileID: 1847950337464772124}
+  _graphics: {fileID: 6513362913137166654}
 --- !u!1 &6404082897422092200
 GameObject:
   m_ObjectHideFlags: 0

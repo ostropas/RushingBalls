@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Gradient:
     serializedVersion: 2
-    key0: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 1}
-    key1: {r: 0.3443396, g: 0.3443396, b: 0.3443396, a: 1}
+    key0: {r: 1, g: 0.91147983, b: 0, a: 1}
+    key1: {r: 0.91998744, g: 0.31470275, b: 0.9811321, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -64,25 +64,7 @@ MonoBehaviour:
     - Type: 0
       Count: 10
       Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
   - Column:
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
     - Type: 0
       Count: 10
       Exist: 1
@@ -111,28 +93,239 @@ MonoBehaviour:
     - Type: 0
       Count: 10
       Exist: 1
+    - Type: 4
+      Count: 10
+      Exist: 1
+    - Type: 0
+      Count: 10
+      Exist: 0
+    - Type: 0
+      Count: 10
+      Exist: 0
+    - Type: 0
+      Count: 10
+      Exist: 0
+    - Type: 1
+      Count: 10
+      Exist: 1
+  - Column:
+    - Type: 0
+      Count: 10
+      Exist: 1
+    - Type: 4
+      Count: 10
+      Exist: 1
+    - Type: 3
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 2
+      Count: 20
+      Exist: 1
+  - Column:
+    - Type: 0
+      Count: 10
+      Exist: 1
+    - Type: 0
+      Count: 10
+      Exist: 0
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+  - Column:
+    - Type: 0
+      Count: 10
+      Exist: 1
+    - Type: 0
+      Count: 10
+      Exist: 0
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+  - Column:
+    - Type: 0
+      Count: 10
+      Exist: 1
+    - Type: 0
+      Count: 10
+      Exist: 0
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+  - Column:
+    - Type: 0
+      Count: 10
+      Exist: 1
+    - Type: 0
+      Count: 10
+      Exist: 0
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+  - Column:
+    - Type: 0
+      Count: 10
+      Exist: 1
+    - Type: 0
+      Count: 10
+      Exist: 0
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+  - Column:
+    - Type: 0
+      Count: 10
+      Exist: 1
+    - Type: 0
+      Count: 10
+      Exist: 0
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+  - Column:
+    - Type: 0
+      Count: 10
+      Exist: 1
+    - Type: 0
+      Count: 10
+      Exist: 0
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+  - Column:
+    - Type: 0
+      Count: 10
+      Exist: 1
+    - Type: 2
+      Count: 10
+      Exist: 1
+    - Type: 1
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 0
+      Count: 20
+      Exist: 1
+    - Type: 4
+      Count: 20
+      Exist: 1
+  - Column:
     - Type: 0
       Count: 10
       Exist: 1
     - Type: 0
       Count: 10
       Exist: 1
-    - Type: 0
+    - Type: 2
       Count: 10
       Exist: 1
     - Type: 0
       Count: 10
-      Exist: 1
+      Exist: 0
     - Type: 0
       Count: 10
-      Exist: 1
+      Exist: 0
     - Type: 0
       Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
+      Exist: 0
+    - Type: 3
       Count: 10
       Exist: 1
   - Column:
@@ -157,335 +350,7 @@ MonoBehaviour:
     - Type: 0
       Count: 10
       Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
   - Column:
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-  - Column:
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-  - Column:
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-  - Column:
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-  - Column:
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-  - Column:
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-  - Column:
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-  - Column:
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-  - Column:
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-  - Column:
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-  - Column:
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 1
     - Type: 0
       Count: 10
       Exist: 1
