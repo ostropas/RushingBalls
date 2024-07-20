@@ -25,6 +25,7 @@ namespace Gameplay
             if (_count <= 0)
             {
                 _onDestroy?.Invoke();
+                _onDestroy = null;
                 gameObject.SetActive(false);
             }
             else

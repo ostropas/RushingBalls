@@ -10,7 +10,8 @@ namespace Gameplay
     public class PlayerController : MonoBehaviour
     {
         public int NumberOfShoots { get; private set; }
-        
+        public GameplayState State { get; private set; }
+
         private GamefieldInputController _gamefieldInputController;
         private AimLineController _aimLineController = new ();
         
@@ -23,7 +24,6 @@ namespace Gameplay
         private List<Ball> _instantiatedBalls = new();
         private int _pivotBallIndex;
         private Vector2 _startBallsPos;
-        private GameplayState _currentState;
         private bool _isAiming;
 
         private void Awake()
@@ -31,7 +31,7 @@ namespace Gameplay
             _mainCamera = Camera.main;
         }
 
-        public void Init(PlayerData playerData, Vector2 startPos, GamefieldInputController inputController)
+        public void Init(Vector2 startPos, GamefieldInputController inputController)
         {
             _gamefieldInputController = inputController;
             _pivotBallIndex = 0;
@@ -42,7 +42,7 @@ namespace Gameplay
                 name = "BallsParent"
             };
             ballsParent.transform.localPosition = Vector3.zero;
-            for (int i = 0; i < 50 + playerData.AdditionalBallsCount; i++)
+            for (int i = 0; i < 50; i++)
             {
                 Ball ball = Instantiate(_ballPrefab, ballsParent.transform);
                 ball.transform.position = startPos3d;
@@ -77,7 +77,7 @@ namespace Gameplay
 
         private void ChangeState(GameplayState state)
         {
-            _currentState = state;
+            State = state;
             switch (state)
             {
                case GameplayState.Aiming:
@@ -146,7 +146,7 @@ namespace Gameplay
 
         private void Update()
         {
-            if (_currentState == GameplayState.Aiming)
+            if (State == GameplayState.Aiming)
             {
                 if (_isAiming)
                 {
@@ -156,7 +156,7 @@ namespace Gameplay
             }
         }
 
-        private enum GameplayState
+        public enum GameplayState
         {
             Waiting,
             Aiming,

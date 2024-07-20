@@ -1,60 +1,34 @@
-﻿using System;
-using System.IO;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Data;
-using UnityEngine;
+using Gameplay;
 
 namespace Controllers
 {
     public class PlayerDataController
     {
-        private const string SAVE_PATH = "data.json";
-        private readonly string _absoluteSavePath;
-        public PlayerData PlayerData;
+        private readonly PlayerDataSaver _playerDataSaver;
+        private const string SavePath = "data.json";
+        public PlayerData PlayerData => _playerDataSaver.PlayerData;
+
+        public int LastLevelScore { get; private set; }
 
         public PlayerDataController()
         {
-            _absoluteSavePath = Path.Combine(Application.persistentDataPath, SAVE_PATH); 
-           Load(); 
+            _playerDataSaver = new PlayerDataSaver(SavePath);
+            _playerDataSaver.Load();
         }
 
-        public async Task Save()
+        public void LevelCompleted(int score)
         {
-            string json = JsonUtility.ToJson(PlayerData);
-            await File.WriteAllTextAsync(_absoluteSavePath, json);            
+            LastLevelScore = score;
         }
 
-        public void Load()
+        public async Task ApplyScoreAndMultiplier(int multiplier)
         {
-            if (File.Exists(_absoluteSavePath))
-            {
-                try
-                {
-                    string json = File.ReadAllText(_absoluteSavePath);
-                    PlayerData = JsonUtility.FromJson<PlayerData>(json);
-                }
-                catch (Exception e)
-                {
-                    Debug.LogException(e);
-                    CreateSaveFile();
-                }
-            }
-            else
-            {
-                CreateSaveFile();    
-            }
-        }
-
-        private void CreateSaveFile()
-        {
-            if (File.Exists(_absoluteSavePath))
-            {
-                File.Delete(_absoluteSavePath);
-            }
-
-            PlayerData = new PlayerData();
-            string json = JsonUtility.ToJson(PlayerData);
-            File.WriteAllText(_absoluteSavePath, json);            
+            LastLevelScore *= multiplier;
+            PlayerData.Score += LastLevelScore;
+            LastLevelScore = 0;
+            await _playerDataSaver.Save();
         }
     }
 }

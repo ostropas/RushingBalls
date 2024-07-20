@@ -116,19 +116,19 @@ MonoBehaviour:
       Count: 10
       Exist: 1
     - Type: 3
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 2
-      Count: 20
+      Count: 2
       Exist: 1
   - Column:
     - Type: 0
@@ -138,41 +138,19 @@ MonoBehaviour:
       Count: 10
       Exist: 0
     - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 0
-      Count: 20
-      Exist: 1
-  - Column:
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 0
-    - Type: 0
-      Count: 20
-      Exist: 1
-    - Type: 0
-      Count: 20
-      Exist: 1
-    - Type: 0
-      Count: 20
-      Exist: 1
-    - Type: 0
-      Count: 20
-      Exist: 1
-    - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
   - Column:
     - Type: 0
@@ -182,41 +160,19 @@ MonoBehaviour:
       Count: 10
       Exist: 0
     - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 0
-      Count: 20
-      Exist: 1
-  - Column:
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 0
-    - Type: 0
-      Count: 20
-      Exist: 1
-    - Type: 0
-      Count: 20
-      Exist: 1
-    - Type: 0
-      Count: 20
-      Exist: 1
-    - Type: 0
-      Count: 20
-      Exist: 1
-    - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
   - Column:
     - Type: 0
@@ -226,41 +182,19 @@ MonoBehaviour:
       Count: 10
       Exist: 0
     - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 0
-      Count: 20
-      Exist: 1
-  - Column:
-    - Type: 0
-      Count: 10
-      Exist: 1
-    - Type: 0
-      Count: 10
-      Exist: 0
-    - Type: 0
-      Count: 20
-      Exist: 1
-    - Type: 0
-      Count: 20
-      Exist: 1
-    - Type: 0
-      Count: 20
-      Exist: 1
-    - Type: 0
-      Count: 20
-      Exist: 1
-    - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
   - Column:
     - Type: 0
@@ -270,19 +204,85 @@ MonoBehaviour:
       Count: 10
       Exist: 0
     - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 0
-      Count: 20
+      Count: 2
+      Exist: 1
+  - Column:
+    - Type: 0
+      Count: 10
+      Exist: 1
+    - Type: 0
+      Count: 10
+      Exist: 0
+    - Type: 0
+      Count: 2
+      Exist: 1
+    - Type: 0
+      Count: 2
+      Exist: 1
+    - Type: 0
+      Count: 2
+      Exist: 1
+    - Type: 0
+      Count: 2
+      Exist: 1
+    - Type: 0
+      Count: 2
+      Exist: 1
+  - Column:
+    - Type: 0
+      Count: 10
+      Exist: 1
+    - Type: 0
+      Count: 10
+      Exist: 0
+    - Type: 0
+      Count: 2
+      Exist: 1
+    - Type: 0
+      Count: 2
+      Exist: 1
+    - Type: 0
+      Count: 2
+      Exist: 1
+    - Type: 0
+      Count: 2
+      Exist: 1
+    - Type: 0
+      Count: 2
+      Exist: 1
+  - Column:
+    - Type: 0
+      Count: 10
+      Exist: 1
+    - Type: 0
+      Count: 10
+      Exist: 0
+    - Type: 0
+      Count: 2
+      Exist: 1
+    - Type: 0
+      Count: 2
+      Exist: 1
+    - Type: 0
+      Count: 2
+      Exist: 1
+    - Type: 0
+      Count: 2
+      Exist: 1
+    - Type: 0
+      Count: 2
       Exist: 1
   - Column:
     - Type: 0
@@ -292,19 +292,19 @@ MonoBehaviour:
       Count: 10
       Exist: 1
     - Type: 1
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 0
-      Count: 20
+      Count: 2
       Exist: 1
     - Type: 4
-      Count: 20
+      Count: 2
       Exist: 1
   - Column:
     - Type: 0

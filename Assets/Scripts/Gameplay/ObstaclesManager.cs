@@ -8,6 +8,7 @@ namespace Gameplay
     public class ObstaclesManager : MonoBehaviour
     {
         public event Action<int> OnObstacleDestroy;
+        public event Action OnLevelCompleted;
         
         [SerializeField] private ObstaclesDictionary _obstacles;
         [SerializeField] private int _scorePerObstacle;
@@ -30,8 +31,6 @@ namespace Gameplay
             float topOffset = levelData.TopOffset;
             int maxVal = levelData.Field.Max(f => f.Column.Max(c => c.Count));
 
-            _totalObstaclesCount  = levelData.Field.Count * levelData.Field[0].Column.Count;
-            
             for (int i = 0; i < levelData.Field.Count; i++)
             {
                 for (int j = 0; j < levelData.Field[i].Column.Count; j++)
@@ -39,6 +38,7 @@ namespace Gameplay
                     Field fieldData = levelData.Field[i].Column[j];
                     if (fieldData.Exist)
                     {
+                        _totalObstaclesCount++;
                         Obstacle obstacle = Instantiate(_obstacles[fieldData.Type], transform);
                         float xPos = -leftOffset + i * size.x + size.x / 2;
                         float yPos = topOffset - j * size.y - size.y / 2;
@@ -53,7 +53,11 @@ namespace Gameplay
         private void ObstacleDestroy()
         {
             _destroyedObstaclesCount++;
-           OnObstacleDestroy?.Invoke(_scorePerObstacle); 
+           OnObstacleDestroy?.Invoke(_scorePerObstacle);
+           if (_destroyedObstaclesCount == _totalObstaclesCount)
+           {
+               OnLevelCompleted?.Invoke();
+           }
         }
     }
 
