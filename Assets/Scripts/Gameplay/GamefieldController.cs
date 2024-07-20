@@ -14,6 +14,7 @@ namespace Gameplay
 
         [SerializeField] private Vector2 _ballStartPosition;
 
+        [Inject]
         public void Init(PlayerDataController playerDataController)
         {
             _playerDataController = playerDataController;
@@ -27,18 +28,17 @@ namespace Gameplay
         
         public class GamefieldFactory : IFactory<GamefieldController>
         {
-            private PlayerDataController _playerDataController;
+            private DiContainer _container;
 
-            public GamefieldFactory(PlayerDataController playerDataController)
+            public GamefieldFactory(DiContainer container)
             {
-                _playerDataController = playerDataController;
+                _container = container;
             }
             
             public GamefieldController Create()
             {
-                GamefieldController prefab = Resources.Load<GamefieldController>("Prefabs/Gamefield");
-                GamefieldController instance = Instantiate(prefab);
-                instance.Init(_playerDataController);
+                GamefieldController prefab = Resources.Load<GamefieldController>("Prefabs/Gamefield/Gamefield");
+                GamefieldController instance = _container.InstantiatePrefabForComponent<GamefieldController>(prefab.gameObject);
                 return instance;
             }
         }

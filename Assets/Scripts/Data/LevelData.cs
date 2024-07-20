@@ -4,11 +4,19 @@ using UnityEngine;
 
 namespace Data
 {
+    [Serializable]
     [CreateAssetMenu(menuName = "Create new level", fileName = "Level")]
     public class LevelData : ScriptableObject
     {
         public Gradient Gradient;
-        public List<List<Field>> Field = new();
+        public List<FieldColumn> Field = new();
+        public float TopOffset;
+    }
+
+    [Serializable]
+    public class FieldColumn
+    {
+        public List<Field> Column = new();
     }
 
     [Serializable]
@@ -16,6 +24,7 @@ namespace Data
     {
         public LevelFieldType Type;
         public int Count;
+        public bool Exist = true;
     }
 
     public enum LevelFieldType
