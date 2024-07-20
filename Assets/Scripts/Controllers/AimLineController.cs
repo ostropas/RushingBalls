@@ -36,7 +36,7 @@ namespace Controllers
 
             int i = 0;
 
-            int mask = LayerMask.GetMask("BallObstacle");
+            int mask = LayerMask.GetMask("GamefieldBorders");
 
             RaycastHit2D hit = Physics2D.Raycast(start, direction, Mathf.Infinity, mask);
 

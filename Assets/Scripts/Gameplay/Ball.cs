@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Gameplay
 {
@@ -11,17 +9,22 @@ namespace Gameplay
         [SerializeField] private Rigidbody2D _rigidbody2D;
         [SerializeField] private float _speed;
         
-        [SerializeField] private Vector2 _velocity;
         private Vector2 _prevVelocity;
         public Action<Ball> OnBottomTouched;
 
-        public BallState State;
+        public BallState State { get; private set; }
+
+        private void Start()
+        {
+            _rigidbody2D.simulated = false;
+        }
 
         public void StartMoving(Vector2 velocity)
         {
             State = BallState.Moving;
-            _velocity = velocity.normalized * _speed;
-            _rigidbody2D.AddForce(_velocity, ForceMode2D.Force);
+            velocity = velocity.normalized * _speed;
+            _rigidbody2D.simulated = true;
+            _rigidbody2D.AddForce(velocity, ForceMode2D.Force);
         }
 
         private void OnCollisionEnter2D(Collision2D other)
@@ -40,36 +43,9 @@ namespace Gameplay
             }
         }
 
-        /*
-        private void BounceFromWall(Collision2D collision2D)
-        {
-            ContactPoint2D contact = collision2D.GetContact(0);
-            _velocity = Vector3.Reflect(_velocity, contact.normal);
-            if (1 - Vector2.Dot(_velocity, _prevVelocity) < 0.001f)
-            {
-                _velocity = Quaternion.AngleAxis(Random.Range(-1, 1), Vector3.forward) * _velocity;
-            }
-            _prevVelocity = _velocity;
-            _rigidbody2D.velocity = Vector2.zero;
-            _rigidbody2D.AddForce(_velocity, ForceMode2D.Force);
-        }
-
-        private void FixedUpdate()
-        {
-            if (State == BallState.Moving)
-            {
-                if (_rigidbody2D.velocity.magnitude < _velocity.magnitude * 0.95f)
-                {
-                    _rigidbody2D.velocity = Vector2.zero;
-                    _rigidbody2D.AddForce(_velocity, ForceMode2D.Force);
-                }
-            }
-        }
-        */
-
         private void CompleteBallRound()
         {
-            _velocity = Vector2.zero;
+            _rigidbody2D.simulated = false;
             _rigidbody2D.velocity = Vector2.zero;
             OnBottomTouched?.Invoke(this);
         }

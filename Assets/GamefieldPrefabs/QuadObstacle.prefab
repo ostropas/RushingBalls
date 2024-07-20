@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3441037750018202286, guid: 1c29a5a9b2c4d2249a2a81d579b5fd39, type: 3}
       propertyPath: m_Name
-      value: BaseObstacle
+      value: QuadObstacle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c29a5a9b2c4d2249a2a81d579b5fd39, type: 3}

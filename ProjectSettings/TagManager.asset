@@ -4,7 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Border
   - BottomBorder
   - Obstacle
   layers:
@@ -16,7 +15,7 @@ TagManager:
   - UI
   - BallObstacle
   - Ball
-  - 
+  - GamefieldBorders
   - 
   - 
   - 
