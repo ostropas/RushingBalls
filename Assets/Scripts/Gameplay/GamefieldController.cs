@@ -8,18 +8,18 @@ namespace Gameplay
 {
     public class GamefieldController : MonoBehaviour
     {
-        public int MaxScore => _obstaclesManager.MaxScore;
-        
+        public float LevelProgress => _obstaclesManager.LevelProgress;
+        public int Score { get; private set; }
+
         private PlayerDataController _playerDataController;
         private LevelsStorage _levelsStorage;
 
-        private int _totalScore;
-
-        public event Action<int> ScoreUpdated; 
+        public event Action ScoreUpdated; 
         
         [SerializeField] private PlayerController _playerController;
         [SerializeField] private ObstaclesManager _obstaclesManager;
         [SerializeField] private GamefieldInputController _gamefieldInputController;
+        [SerializeField] private int MaxScoreMultiplier;
 
         [SerializeField] private Vector2 _ballStartPosition;
 
@@ -39,8 +39,9 @@ namespace Gameplay
 
         private void OnObstacleDestroy(int score)
         {
-            _totalScore += score;
-            ScoreUpdated?.Invoke(_totalScore); 
+            int correctedScore = Mathf.Max(MaxScoreMultiplier - _playerController.NumberOfShoots + 1, 1);
+            Score += score * correctedScore;
+            ScoreUpdated?.Invoke(); 
         }
         
         public class GamefieldFactory : IFactory<GamefieldController>

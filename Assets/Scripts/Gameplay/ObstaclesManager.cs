@@ -13,8 +13,9 @@ namespace Gameplay
         [SerializeField] private int _scorePerObstacle;
         
         private int _destroyedObstaclesCount;
+        private int _totalObstaclesCount;
 
-        public int MaxScore { get; private set; } = 0;
+        public float LevelProgress => _destroyedObstaclesCount / (float)_totalObstaclesCount;
         
         public void LoadLevel(int levelIndex, LevelsStorage levelsStorage)
         {
@@ -29,8 +30,7 @@ namespace Gameplay
             float topOffset = levelData.TopOffset;
             int maxVal = levelData.Field.Max(f => f.Column.Max(c => c.Count));
 
-            int factorialVal = levelData.Field.Count * levelData.Field[0].Column.Count;
-            MaxScore = factorialVal * _scorePerObstacle;
+            _totalObstaclesCount  = levelData.Field.Count * levelData.Field[0].Column.Count;
             
             for (int i = 0; i < levelData.Field.Count; i++)
             {

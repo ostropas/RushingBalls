@@ -22,10 +22,10 @@ namespace UI
            _scoreSlider.value = 0;
         }
 
-        private void GamefieldControllerOnAddedScore(int obj)
+        private void GamefieldControllerOnAddedScore()
         {
-            _scoreSlider.value = (obj / (float)_gamefieldController.MaxScore);
-            _score.text = obj.ToString();
+            _scoreSlider.value = _gamefieldController.LevelProgress;
+            _score.text = _gamefieldController.Score.ToString();
         }
     }
     

@@ -66,7 +66,7 @@ namespace Gameplay
                 float dot = Vector2.Dot(_rigidbody2D.velocity, _prevVelocity);
                 if (1 - Mathf.Abs(dot) < 0.0001f)
                 {
-                   _rigidbody2D.AddForce(Vector2.down * 0.0001f, ForceMode2D.Force); 
+                   _rigidbody2D.AddForce(Vector2.down * 0.001f, ForceMode2D.Force); 
                 }
 
                 _prevVelocity = _rigidbody2D.velocity;

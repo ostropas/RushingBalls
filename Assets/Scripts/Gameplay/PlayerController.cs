@@ -9,7 +9,8 @@ namespace Gameplay
 {
     public class PlayerController : MonoBehaviour
     {
-        private PlayerData _playerData;
+        public int NumberOfShoots { get; private set; }
+        
         private GamefieldInputController _gamefieldInputController;
         private AimLineController _aimLineController = new ();
         
@@ -33,7 +34,6 @@ namespace Gameplay
         public void Init(PlayerData playerData, Vector2 startPos, GamefieldInputController inputController)
         {
             _gamefieldInputController = inputController;
-            _playerData = playerData;
             _pivotBallIndex = 0;
             _startBallsPos = startPos;
             Vector3 startPos3d = new Vector3(startPos.x, startPos.y, 0);
@@ -92,6 +92,7 @@ namespace Gameplay
 
         private void Shoot(Vector2 dir)
         {
+            NumberOfShoots++;
             ChangeState(GameplayState.Moving);
             StartCoroutine(ShootCoroutine(dir));
         }
