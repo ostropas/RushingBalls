@@ -29,7 +29,9 @@ namespace Gameplay
             float topOffset = levelData.TopOffset;
             int maxVal = levelData.Field.Max(f => f.Column.Max(c => c.Count));
 
-            MaxScore = levelData.Field.Count * levelData.Field[0].Column.Count * _scorePerObstacle;
+            int factorialVal = levelData.Field.Count * levelData.Field[0].Column.Count;
+            MaxScore = factorialVal * _scorePerObstacle;
+            
             for (int i = 0; i < levelData.Field.Count; i++)
             {
                 for (int j = 0; j < levelData.Field[i].Column.Count; j++)
@@ -50,7 +52,8 @@ namespace Gameplay
 
         private void ObstacleDestroy()
         {
-           OnObstacleDestroy?.Invoke(++_destroyedObstaclesCount * _scorePerObstacle); 
+            _destroyedObstaclesCount++;
+           OnObstacleDestroy?.Invoke(_scorePerObstacle); 
         }
     }
 
