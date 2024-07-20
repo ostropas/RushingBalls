@@ -36,6 +36,11 @@ namespace Editor
             _levelData.Gradient = EditorGUILayout.GradientField("Gradient", _levelData.Gradient);
             _levelData.TopOffset = EditorGUILayout.FloatField("Top offset", _levelData.TopOffset);
             DrawFieldSize();
+            if (GUILayout.Button("Save"))
+            {
+                EditorUtility.SetDirty(_levelData);
+                AssetDatabase.SaveAssets();
+            }
             DrawFieldEditor();
         }
 
@@ -68,7 +73,7 @@ namespace Editor
                     for (int j = 0; j < _levelData.Field[i].Column.Count; j++)
                     {
                         var field = _levelData.Field[i].Column[j];
-                        Rect rect = new Rect(i * offset, 110 + j * offset, 69, 69);
+                        Rect rect = new Rect(i * offset, 125 + j * offset, 69, 69);
                         if (field.Exist)
                         {
                             if (field.Type == LevelFieldType.Quad)
@@ -135,7 +140,6 @@ namespace Editor
                         _levelData.Field[i].Column.Add(new Field());
                     }
                 }
-                EditorUtility.SetDirty(_levelData);
             }
 
             _prevHeight = _height;

@@ -23,7 +23,7 @@ namespace Data
     public class Field
     {
         public LevelFieldType Type;
-        public int Count;
+        public int Count = 1;
         public bool Exist = true;
     }
 

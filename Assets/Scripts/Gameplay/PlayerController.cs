@@ -21,6 +21,7 @@ namespace Gameplay
         private Camera _mainCamera;
         private List<Ball> _instantiatedBalls = new();
         private int _pivotBallIndex;
+        private Vector2 _startBallsPos;
         private GameplayState _currentState;
         private bool _isAiming;
 
@@ -34,6 +35,7 @@ namespace Gameplay
             _gamefieldInputController = inputController;
             _playerData = playerData;
             _pivotBallIndex = 0;
+            _startBallsPos = startPos;
             Vector3 startPos3d = new Vector3(startPos.x, startPos.y, 0);
             GameObject ballsParent = new GameObject
             {
@@ -97,27 +99,26 @@ namespace Gameplay
         private IEnumerator ShootCoroutine(Vector2 dir)
         {
             WaitForSeconds delay = new WaitForSeconds(_delayBetweenShots);
+            Ball targetComebackBall = null;
+            Vector2 comebackPos = Vector2.zero;
             int ballsReturned = 0;
-            int firstBall = -1;
-            foreach (Ball instantiatedBall in _instantiatedBalls)
+            
+            foreach (var instantiatedBall in _instantiatedBalls)
             {
-               instantiatedBall.StartMoving(dir, ball =>
-               {
-                   if (firstBall == -1)
-                   {
-                       firstBall = _instantiatedBalls.IndexOf(ball);
-                       ballsReturned++;
-                   }
-                   else
-                   {
-                       ball.StartCoroutine(MoveToFirstCoroutine(ball, _instantiatedBalls[firstBall].transform.position,
-                           () =>
-                           {
-                               ballsReturned++;
-                           }));
-                   }
-               });
-               yield return delay;
+                instantiatedBall.StartMoving(dir);
+                instantiatedBall.OnBottomTouched = ball =>
+                {
+                    if (targetComebackBall == null)
+                    {
+                        targetComebackBall = ball;
+                        _pivotBallIndex = _instantiatedBalls.IndexOf(ball);
+                        comebackPos = targetComebackBall.transform.position;
+                        comebackPos.y = _startBallsPos.y;
+                    }
+
+                    ball.SetComebackPoint(comebackPos, () => ballsReturned++);
+                };
+                yield return delay;
             }
 
             while (ballsReturned != _instantiatedBalls.Count)
@@ -126,27 +127,6 @@ namespace Gameplay
             }
             
             ChangeState(GameplayState.Aiming);
-        }
-
-        private IEnumerator MoveToFirstCoroutine(Ball ball, Vector2 pos, Action onComplete)
-        {
-            Vector2 startPos = ball.transform.position;
-            float moveTime = 0.2f * (startPos - pos).magnitude;
-            if (moveTime > 0.01)
-            {
-                float t = 0;
-                while (t < moveTime)
-                {
-                    float normalizedVal = t / moveTime;
-                    Vector2 currentPos = Vector2.Lerp(startPos, pos, normalizedVal);
-                    ball.transform.position = currentPos;
-                    yield return null;
-                    t += Time.deltaTime;
-                }
-            }
-
-            ball.transform.position = pos;
-            onComplete?.Invoke();
         }
 
         private Vector2 CalcDirection()
