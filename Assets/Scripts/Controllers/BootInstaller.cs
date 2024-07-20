@@ -15,7 +15,7 @@ namespace Controllers
             Container.Bind<ViewManager>().FromNew().AsSingle();
             Container.Bind<LevelsStorage>().FromScriptableObjectResource("Levels/LevelsStorage").AsSingle();
             Container.Bind<PlayerDataController>().FromNew().AsSingle().NonLazy();
-            Container.Bind<GamefieldController>().FromFactory<GamefieldController.GamefieldFactory>().AsCached();
+            Container.Bind<GamefieldController>().FromFactory<GamefieldController.GamefieldFactory>().AsTransient();
 
             Container.Bind<Transform>().FromInstance(UIParent).AsSingle();
 

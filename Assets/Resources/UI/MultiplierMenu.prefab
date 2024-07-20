@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f035a6c034af8148b5268d93aad1f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _descText: {fileID: 0}
+  _descText: {fileID: 2865377968708380675}
   _multiButtons:
   - {fileID: 235857317026235149}
   - {fileID: 2082720210969094572}

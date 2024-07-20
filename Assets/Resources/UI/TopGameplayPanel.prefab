@@ -64,6 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _score: {fileID: 8553746450126682532}
   _scoreSlider: {fileID: 8553746451045779900}
+  _pauseButton: {fileID: 8553746450912882860}
 --- !u!1 &8553746450126682534
 GameObject:
   m_ObjectHideFlags: 0

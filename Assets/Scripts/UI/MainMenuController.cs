@@ -28,7 +28,6 @@ namespace UI
         private void StartPlay()
         {
             _viewManager.Hide<MainMenuController>();
-            _container.Resolve<GamefieldController>();
             _viewManager.Show<GameplayPanelController>();
         }
     }

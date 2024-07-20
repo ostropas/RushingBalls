@@ -41,6 +41,7 @@ namespace Gameplay
             {
                 name = "BallsParent"
             };
+            ballsParent.transform.SetParent(transform);
             ballsParent.transform.localPosition = Vector3.zero;
             for (int i = 0; i < 50; i++)
             {
