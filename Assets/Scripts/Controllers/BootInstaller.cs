@@ -22,6 +22,7 @@ namespace Controllers
             Container.Bind<MainMenuController>().FromFactory<MainMenuControllerFactory>().AsTransient();
             Container.Bind<GameplayPanelController>().FromFactory<GameplayPanelControllerFactory>().AsTransient();
             Container.Bind<MultiplierMenuController>().FromFactory<MultiplierMenuControllerFactory>().AsTransient();
+            Container.Bind<LeaderboardMenuController>().FromFactory<LeaderboardMenuControllerFactory>().AsTransient();
             
             Container.Bind<BootController>().AsSingle().NonLazy();
         }

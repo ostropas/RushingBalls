@@ -11,6 +11,7 @@ namespace Controllers
         public PlayerData PlayerData => _playerDataSaver.PlayerData;
 
         public int LastLevelScore { get; private set; }
+        public int LastTookMultiplier { get; private set; }
 
         public PlayerDataController()
         {
@@ -25,6 +26,7 @@ namespace Controllers
 
         public async Task ApplyScoreAndMultiplier(int multiplier)
         {
+            LastTookMultiplier = multiplier;
             LastLevelScore *= multiplier;
             PlayerData.Score += LastLevelScore;
             LastLevelScore = 0;

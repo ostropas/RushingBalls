@@ -10,14 +10,12 @@ namespace UI
     {
         [SerializeField] private Button _playButton;
         
-        private DiContainer _container;
         private ViewManager _viewManager;
             
         [Inject]
-        public void Init(ViewManager viewManager, DiContainer container)
+        public void Init(ViewManager viewManager)
         {
             _viewManager = viewManager;
-            _container = container;
         }
 
         private void Start()
