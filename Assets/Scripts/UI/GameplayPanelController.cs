@@ -1,9 +1,7 @@
 ﻿using System;
-using Gameplay;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 namespace UI
 {
@@ -12,37 +10,22 @@ namespace UI
         [SerializeField] private TMP_Text _score;
         [SerializeField] private Slider _scoreSlider;
         [SerializeField] private Button _pauseButton;
-        
-        private GamefieldController _gamefieldController;
-        private ViewManager _viewManager;
 
-        [Inject]
-        public void Init(GamefieldController gamefieldController, ViewManager viewManager)
+        public void SetOnExit(Action onExit)
         {
-            _gamefieldController = gamefieldController;
-            _viewManager = viewManager;
-           gamefieldController.ScoreUpdated += GamefieldControllerOnAddedScore;
+           _pauseButton.onClick.AddListener(() => onExit?.Invoke());
+        }
+
+        public void OnUpdateData(float levelProgress, int score)
+        {
+            _scoreSlider.value = levelProgress;
+            _score.text = score.ToString();
         }
 
         private void Start()
         {
            _score.text = "0";
            _scoreSlider.value = 0;
-           _pauseButton.onClick.AddListener(ReturnToMainMenu);
-        }
-
-        private void ReturnToMainMenu()
-        {
-            Destroy(_gamefieldController.gameObject);
-            _viewManager.Show<MainMenuController>();
-            _viewManager.Hide<GameplayPanelController>();
-        }
-
-
-        private void GamefieldControllerOnAddedScore()
-        {
-            _scoreSlider.value = _gamefieldController.LevelProgress;
-            _score.text = _gamefieldController.Score.ToString();
         }
     }
 }

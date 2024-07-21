@@ -17,6 +17,7 @@ namespace UI
         
         private PlayerDataController _playerDataController;
         private ViewManager _viewManager;
+        private BootController _bootController;
 
         private void Awake()
         {
@@ -24,10 +25,11 @@ namespace UI
         }
 
         [Inject]
-        public void Init(PlayerDataController playerDataController, ViewManager viewManager)
+        public void Init(PlayerDataController playerDataController, ViewManager viewManager, BootController bootController)
         {
             _playerDataController = playerDataController;
             _viewManager = viewManager;
+            _bootController = bootController;
         }
 
         private void Start()
@@ -81,7 +83,7 @@ namespace UI
         private void PlayAgain()
         {
             _viewManager.Hide<LeaderboardMenuController>();
-            _viewManager.Show<GameplayPanelController>();
+            _bootController.StartLevel();
         }
     }
 }

@@ -14,20 +14,21 @@ namespace DI
         public override void InstallBindings()
         {
             Container.Bind<BalanceConfig>().FromScriptableObjectResource("Config/Balance").AsSingle();
-            Container.Bind<ViewManager>().FromNew().AsSingle();
+            Container.Bind<ViewManager>().AsSingle();
+            Container.Bind<LevelController>().AsTransient();
             Container.Bind<LevelsStorage>().FromScriptableObjectResource("Levels/LevelsStorage").AsSingle();
-            Container.Bind<PlayerDataController>().FromNew().AsSingle().NonLazy();
+            Container.Bind<PlayerDataController>().AsSingle().NonLazy();
             Container.Bind<GamefieldController>().FromFactory<GamefieldController.GamefieldFactory>().AsTransient();
+            Container.Bind<BootController>().AsSingle();
 
             Container.Bind<Transform>().FromInstance(UIParent).AsSingle();
-            
             
             BindUIController<MainMenuController>("UI/MainMenu"); 
             BindUIController<GameplayPanelController>("UI/TopGameplayPanel"); 
             BindUIController<MultiplierMenuController>("UI/MultiplierMenu"); 
-            BindUIController<LeaderboardMenuController>("UI/LeaderboardMenu"); 
-            
-            Container.Bind<BootController>().AsSingle().NonLazy();
+            BindUIController<LeaderboardMenuController>("UI/LeaderboardMenu");
+
+            Container.Resolve<BootController>().StartGame();
         }
 
         private void BindUIController<T>(string path) where T : BaseUIController

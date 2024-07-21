@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using Controllers;
 using Data;
-using UI;
 using UnityEngine;
 using Zenject;
 
@@ -10,7 +9,8 @@ namespace Gameplay
 {
     public class GamefieldController : MonoBehaviour
     {
-        public event Action ScoreUpdated; 
+        public event Action ScoreUpdated;
+        public event Action LevelCompleted;
         
         public float LevelProgress => _obstaclesManager.LevelProgress;
         public int Score { get; private set; }
@@ -20,23 +20,19 @@ namespace Gameplay
         [SerializeField] private GamefieldInputController _gamefieldInputController;
         [SerializeField] private Vector2 _ballStartPosition;
 
-        private PlayerDataController _playerDataController;
         private LevelsStorage _levelsStorage;
-        private ViewManager _viewManager;
         private BalanceConfig _balanceConfig;
 
         [Inject]
-        public void Init(PlayerDataController playerDataController, LevelsStorage levelsStorage, ViewManager viewManager, BalanceConfig balanceConfig)
+        public void Init(LevelsStorage levelsStorage, BalanceConfig balanceConfig)
         {
             _balanceConfig = balanceConfig;
-            _playerDataController = playerDataController;
             _levelsStorage = levelsStorage;
-            _viewManager = viewManager;
         }
 
-        private void Start()
+        public void StartLevel(int currentLevel)
         {
-            _obstaclesManager.LoadLevel(_playerDataController.PlayerData.CurrentLevel, _levelsStorage);
+            _obstaclesManager.LoadLevel(currentLevel, _levelsStorage);
             _obstaclesManager.OnObstacleDestroy += OnObstacleDestroy;
             _obstaclesManager.OnLevelCompleted += OnLevelCompleted;
             _playerController.Init(_ballStartPosition, _gamefieldInputController, _balanceConfig);
@@ -57,10 +53,7 @@ namespace Gameplay
         private IEnumerator LevelCompleteCoroutine()
         {
             yield return new WaitWhile(() => _playerController.State == PlayerController.GameplayState.Moving);
-           _playerDataController.LevelCompleted(Score);
-           _viewManager.Hide<GameplayPanelController>();
-           _viewManager.Show<MultiplierMenuController>();
-           Destroy(gameObject);
+            LevelCompleted?.Invoke();
         }
         
         public class GamefieldFactory : IFactory<GamefieldController>

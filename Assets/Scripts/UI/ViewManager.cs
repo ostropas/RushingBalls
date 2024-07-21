@@ -1,7 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using UnityEngine;
 using Zenject;
 
 namespace UI
@@ -16,7 +14,7 @@ namespace UI
             _container = container;
         }
 
-        public async Task<T> Show<T>() where T : BaseUIController
+        public T Show<T>() where T : BaseUIController
         {
             BaseUIController controller = _currentUIControllers.FirstOrDefault(x => x is T);
             if (controller != null)
@@ -26,17 +24,17 @@ namespace UI
             
             T controllerInstance = _container.Resolve<T>();
             _currentUIControllers.Add(controllerInstance);
-            await controllerInstance.Show();
+            controllerInstance.Show();
             return controllerInstance;
         }
 
-        public async Task Hide<T>()
+        public void Hide<T>()
         {
             BaseUIController controller = _currentUIControllers.FirstOrDefault(x => x is T);
             if (controller != null)
             {
                 _currentUIControllers.Remove(controller);
-                await controller.Hide();
+                controller.Hide();
             }
         }
     }

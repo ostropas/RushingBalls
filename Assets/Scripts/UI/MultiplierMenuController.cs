@@ -16,15 +16,18 @@ namespace UI
         private PlayerDataController _playerDataController;
         private ViewManager _viewManager;
         private BalanceConfig _balanceConfig;
+        private BootController _bootController;
         
         private bool _multiplierClicked;
         
         [Inject]
-        public void Init(PlayerDataController playerDataController, ViewManager viewManager, BalanceConfig balanceConfig)
+        public void Init(PlayerDataController playerDataController, ViewManager viewManager,
+            BalanceConfig balanceConfig, BootController bootController)
         {
             _playerDataController = playerDataController;
             _viewManager = viewManager;
             _balanceConfig = balanceConfig;
+            _bootController = bootController;
         }
 
         private void Start()

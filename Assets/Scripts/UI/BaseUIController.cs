@@ -1,21 +1,16 @@
-using System;
-using System.Threading.Tasks;
 using UnityEngine;
-using Zenject;
 
 namespace UI
 {
     public abstract class BaseUIController : MonoBehaviour
     {
-        public virtual Task Show()
+        public virtual void Show()
         {
-            return Task.CompletedTask;
         }
 
-        public virtual Task Hide()
+        public virtual void Hide()
         {
            Destroy(gameObject);
-           return Task.CompletedTask;
         }
     }
 }
