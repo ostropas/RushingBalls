@@ -50,13 +50,4 @@ namespace UI
             _viewManager.Show<LeaderboardMenuController>();
         }
     }
-    
-    public class MultiplierMenuControllerFactory : BaseUIControllerFactory<MultiplierMenuController>
-    {
-        public MultiplierMenuControllerFactory(DiContainer container, Transform uiParent) : base(container, uiParent)
-        {
-        }
-
-        protected override string PathToGameObject => "UI/MultiplierMenu";
-    }
 }

@@ -84,14 +84,4 @@ namespace UI
             _viewManager.Show<GameplayPanelController>();
         }
     }
-    
-
-    public class LeaderboardMenuControllerFactory : BaseUIControllerFactory<LeaderboardMenuController>
-    {
-        public LeaderboardMenuControllerFactory(DiContainer container, Transform uiParent) : base(container, uiParent)
-        {
-        }
-
-        protected override string PathToGameObject => "UI/LeaderboardMenu";
-    }
 }

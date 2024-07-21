@@ -1,10 +1,11 @@
+using Controllers;
 using Data;
 using Gameplay;
 using UI;
 using UnityEngine;
 using Zenject;
 
-namespace Controllers
+namespace DI
 {
     public class BootInstaller : MonoInstaller
     {
@@ -20,12 +21,22 @@ namespace Controllers
 
             Container.Bind<Transform>().FromInstance(UIParent).AsSingle();
             
-            Container.Bind<MainMenuController>().FromFactory<MainMenuControllerFactory>().AsTransient();
-            Container.Bind<GameplayPanelController>().FromFactory<GameplayPanelControllerFactory>().AsTransient();
-            Container.Bind<MultiplierMenuController>().FromFactory<MultiplierMenuControllerFactory>().AsTransient();
-            Container.Bind<LeaderboardMenuController>().FromFactory<LeaderboardMenuControllerFactory>().AsTransient();
+            
+            BindUIController<MainMenuController>("UI/MainMenu"); 
+            BindUIController<GameplayPanelController>("UI/TopGameplayPanel"); 
+            BindUIController<MultiplierMenuController>("UI/MultiplierMenu"); 
+            BindUIController<LeaderboardMenuController>("UI/LeaderboardMenu"); 
             
             Container.Bind<BootController>().AsSingle().NonLazy();
+        }
+
+        private void BindUIController<T>(string path) where T : BaseUIController
+        {
+            Container.Bind<T>()
+                .FromIFactory(c => 
+                    c.To<IFactory<T>>()
+                    .FromMethod(context => new UIControllerFactory.BaseUIControllerFactory<T>(context.Container, UIParent, path))
+                ).AsTransient();
         }
     }
 }

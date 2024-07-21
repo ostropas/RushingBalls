@@ -45,14 +45,4 @@ namespace UI
             _score.text = _gamefieldController.Score.ToString();
         }
     }
-    
-
-    public class GameplayPanelControllerFactory : BaseUIControllerFactory<GameplayPanelController >
-    {
-        public GameplayPanelControllerFactory(DiContainer container, Transform uiParent) : base(container, uiParent)
-        {
-        }
-
-        protected override string PathToGameObject => "UI/TopGameplayPanel";
-    }
 }

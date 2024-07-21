@@ -29,13 +29,4 @@ namespace UI
             _viewManager.Show<GameplayPanelController>();
         }
     }
-
-    public class MainMenuControllerFactory : BaseUIControllerFactory<MainMenuController>
-    {
-        public MainMenuControllerFactory(DiContainer container, Transform uiParent) : base(container, uiParent)
-        {
-        }
-
-        protected override string PathToGameObject => "UI/MainMenu";
-    }
 }
