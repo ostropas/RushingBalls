@@ -30,6 +30,7 @@ namespace Controllers
             LastLevelScore *= multiplier;
             PlayerData.Score += LastLevelScore;
             LastLevelScore = 0;
+            PlayerData.CurrentLevel++;
             await _playerDataSaver.Save();
         }
     }

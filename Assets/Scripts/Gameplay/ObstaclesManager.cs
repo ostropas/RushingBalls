@@ -20,7 +20,14 @@ namespace Gameplay
         
         public void LoadLevel(int levelIndex, LevelsStorage levelsStorage)
         {
-            InstantiateLevel(levelsStorage.Levels[levelIndex]);
+            int correctedIndex = (int)Mathf.Repeat(levelIndex, levelsStorage.Levels.Count);
+            InstantiateLevel(levelsStorage.Levels[correctedIndex]);
+        }
+        
+        private int Repeat(int val, int max)
+        {		
+            int res = val % max;
+            return res == 0 ? max : res;
         }
 
         private void InstantiateLevel(LevelData levelData)

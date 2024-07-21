@@ -12,13 +12,14 @@ namespace Gameplay
         public int NumberOfShoots { get; private set; }
         public GameplayState State { get; private set; }
 
-        private GamefieldInputController _gamefieldInputController;
-        private AimLineController _aimLineController = new ();
-        
         [SerializeField] private Ball _ballPrefab;
         [SerializeField] private GameObject _dotPrefab;
         [SerializeField] private float _delayBetweenShots;
         [SerializeField] private float _angleClamp = 80;
+        
+        private GamefieldInputController _gamefieldInputController;
+        private AimLineController _aimLineController = new ();
+        private BalanceConfig _balanceConfig;
         
         private Camera _mainCamera;
         private List<Ball> _instantiatedBalls = new();
@@ -31,8 +32,9 @@ namespace Gameplay
             _mainCamera = Camera.main;
         }
 
-        public void Init(Vector2 startPos, GamefieldInputController inputController)
+        public void Init(Vector2 startPos, GamefieldInputController inputController, BalanceConfig balanceConfig)
         {
+            _balanceConfig = balanceConfig;
             _gamefieldInputController = inputController;
             _pivotBallIndex = 0;
             _startBallsPos = startPos;
@@ -43,7 +45,7 @@ namespace Gameplay
             };
             ballsParent.transform.SetParent(transform);
             ballsParent.transform.localPosition = Vector3.zero;
-            for (int i = 0; i < 50; i++)
+            for (int i = 0; i < _balanceConfig.BallsCount; i++)
             {
                 Ball ball = Instantiate(_ballPrefab, ballsParent.transform);
                 ball.transform.position = startPos3d;
