@@ -28,6 +28,7 @@ namespace DI
             BindUIController<MultiplierMenuController>("UI/MultiplierMenu"); 
             BindUIController<LeaderboardMenuController>("UI/LeaderboardMenu");
 
+            // Game entry point
             Container.Resolve<BootController>().StartGame();
         }
 

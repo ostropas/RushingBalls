@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Controllers
 {
+    // Controls data between gameplay and UI
     public class LevelController
     {
         private GameplayPanelController _topPanel;
