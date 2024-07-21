@@ -2,7 +2,7 @@
 
 namespace UI.InfiniteScroll
 {
-    public abstract class InfiniteScrollElement : MonoBehaviour
+    public abstract class InfiniteScrollElement<T> : MonoBehaviour
     {
         public RectTransform RectTransform;
         
@@ -12,5 +12,6 @@ namespace UI.InfiniteScroll
         }
         
         public abstract void ResetView();
+        public abstract void Init(T data);
     }
 }

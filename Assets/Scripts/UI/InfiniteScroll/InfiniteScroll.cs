@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace UI.InfiniteScroll
 {
-    public class InfiniteScroll<T, TData> : MonoBehaviour where T : InfiniteScrollElement
+    public class InfiniteScroll<T, TData> : MonoBehaviour where T : InfiniteScrollElement<TData>
     {
         [SerializeField] private T _elementPrefab;
         [SerializeField] private ScrollRect _scroll;
@@ -15,17 +15,14 @@ namespace UI.InfiniteScroll
         private readonly Stack<T> _pull = new();
         private float _height;
 
-        private Action<T, TData> _initAction;
-
         private List<ScrollData> _dataList = new();
 
-        public void Init(List<TData> dataList, Action<T, TData> initAction)
+        public void Init(List<TData> dataList)
         {
             _dataList = dataList.Select(x => new ScrollData()
             {
                 Data = x
             }).ToList();
-            _initAction = initAction;
             _height = _elementPrefab.GetHeight();
             GenerateViewport();
             InstantiateElements(); 
@@ -75,7 +72,7 @@ namespace UI.InfiniteScroll
                     Vector2 pos = data.Presenter.RectTransform.anchoredPosition;
                     pos.y = data.Pos;
                     data.Presenter.RectTransform.anchoredPosition = pos;
-                    _initAction.Invoke(data.Presenter, data.Data);
+                    data.Presenter.Init(data.Data);
                 }
             }
         }

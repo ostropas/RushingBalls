@@ -5,5 +5,6 @@
         public int Score;
         public string Name;
         public bool IsPlayer;
+        public int Pos;
     }
 }

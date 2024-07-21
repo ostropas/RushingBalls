@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UI.Leaderboard;
 using UnityEngine;
 
@@ -38,13 +39,15 @@ namespace UI
                     Score = Random.Range(400, 600)
                 });
             }
-
-            _scroll.Init(data, InitAction);
-        }
-
-        private void InitAction(LeaderboardElement arg1, LeaderboardData arg2)
-        {
             
+            data = data.OrderBy(x => x.Score).ToList();
+            for (int index = 0; index < data.Count; index++)
+            {
+                LeaderboardData leaderboardData = data[index];
+                leaderboardData.Pos = index;
+            }
+
+            _scroll.Init(data);
         }
     }
 }
